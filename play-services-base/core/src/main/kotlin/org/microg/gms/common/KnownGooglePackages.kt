@@ -235,6 +235,13 @@ private val KNOWN_GOOGLE_PACKAGES = mapOf(
         setOf(ACCOUNT, AUTH, OWNER)
     ),
 
+
+    // Google Assistant Automotive
+    Pair(
+        PackageAndCertHash("com.google.android.carassistant", SHA256, "74b6fbf710e8d90d44d340125889b42306a62c4379d0e5a66220e3a68abf90e2"),
+        PERMISSIONS_PRIVILEGED
+    ),
+
 )
 
 fun isGooglePackage(pkg: PackageAndCertHash): Boolean {
