@@ -294,9 +294,13 @@ class LocationManager(private val context: Context, override val lifecycle: Life
         }
     }
 
+    /**
+     * issue: lastGpsLocation retained the original Location reference instead of an independent copy.
+     * fix: create a new Location instance when updating lastGpsLocation to preserve a copy of all location values.
+     */
     private fun updateGpsLocation(location: Location) {
         if (location.provider != GPS_PROVIDER) return
-        lastGpsLocation = location
+        lastGpsLocation = Location(location)
         lastLocationCapsule.updateFineLocation(location)
         sendNewLocation()
         updateLocationRequests()
